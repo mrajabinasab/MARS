@@ -3,7 +3,7 @@ import argparse
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import wilcoxon, friedmanchisquare
+from scipy.stats import wilcoxon, friedmanchisquare, studentized_range
 import networkx as nx
 import math
 import operator
@@ -446,10 +446,16 @@ def main():
                 index=pivot.columns
             ).sort_values(ascending=False)
 
+            k = len(mars_ranks)
+            N = len(pivot)
+            q_alpha = studentized_range.ppf(1 - alpha, k, np.inf) / np.sqrt(2)
+            sigma_mars = np.std(wr_mat.mean(axis=0), ddof=1)
+            std_uniform_sd = np.sqrt((k**2 - 1) / 12)
+            cd_mars = q_alpha * np.sqrt(k * (k + 1) / (6 * N)) * (sigma_mars / std_uniform_sd)
             fig = UnifiedPlotter.graph_ranks(
                 mars_ranks.values,
                 mars_ranks.index,
-                p_values=p_vals,
+                cd=cd_mars,
                 title="MARS",
                 name=args.name,
                 color_mode=color_mode
