@@ -310,7 +310,7 @@ class UnifiedPlotter:
                     ha=ha, va='bottom',
                     fontsize=18, fontweight='bold')
             
-            rank_label = f"Rank Score: {rank:.2f}" if title != "Standard" else f"Rank: {rank:.2f}"
+            rank_label = f"MARS Score: {rank:.2f}" if title != "Standard" else f"Rank: {rank:.2f}"
             ax.text(lx, ly + 0.015,
                     rank_label,
                     color=m_col,
