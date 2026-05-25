@@ -66,7 +66,15 @@ python mars.py --input results.csv --color
 # Citation
 
 ```bibtex
-CITATION WILL BE PROVIDED UPON PUBLICATION
+@misc{rajabinasab2026marsmagnitudeawarerankstatistics,
+      title={MARS: Magnitude-Aware Rank Statistics}, 
+      author={Muhammad Rajabinasab and Afsaneh M. Nejad and Arthur Zimek},
+      year={2026},
+      eprint={2605.23563},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2605.23563}, 
+}
 ```
 
 ---
